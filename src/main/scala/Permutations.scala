@@ -2,13 +2,14 @@ object Permutations {
 
   def main(args: Array[String]): Unit = {
     val name: String = "anurag"
-    name.toList.permutations
-     val perms = stringPermutations(name)
+     //stringPermutations(name)
+    val output = permutations(name.toList)
+    output.foreach(x => println(x.mkString))
   }
 
   def permutations[T](lst: List[T]): List[List[T]] = lst match {
     case Nil => List(Nil)
-    case x :: xs => permutations(xs) flatMap { perm =>
+    case x :: xs => permutations(xs).flatMap { perm =>
       (0 to xs.length) map { num =>
         (perm.take(num)) ++ List(x) ++ (perm.drop(num))
       }
